@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bestsellers Showcase</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #080808;
+      overflow: hidden;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .landing-page-frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #080808;
+    }
+    iframe {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s;
+    }
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-btn">← Back to App</a>
+
+  <div class="landing-page-frame">
+    <iframe id="showcase-frame" src="bestsellers-book-showcase.html" title="Field Manuals Showcase"></iframe>
+  </div>
+
+  <script>
+    const iframe = document.getElementById('showcase-frame');
+    
+    iframe.addEventListener('load', () => {
+      const doc = iframe.contentDocument;
+      if (!doc) return;
+      
+      const customStyle = doc.createElement('style');
+      customStyle.textContent = `
+        :root {
+          --serif: "iowan-old-style", serif !important;
+          --sans: "iowan-old-style", serif !important; /* using the body font */
+          --ink: #c3a47b !important;
+        }
+        
+        /* Direct overrides based on user props */
+        h1, h2, h3, .heading {
+          font-family: "iowan-old-style", serif !important;
+          font-weight: 500 !important;
+          letter-spacing: -0.085em !important;
+        }
+        
+        body, p, .body-text {
+          font-family: "iowan-old-style", serif !important;
+          font-weight: 400 !important;
+          font-size: 17px !important;
+        }
+      `;
+      doc.head.appendChild(customStyle);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KneeRehab Pro — AI-powered knee surgery rehabilitation exercise guide with real-time pose tracking and skeleton overlay feedback.">
+  <title>KneeRehab Pro — AI Exercise Guide</title>
+  <link rel="stylesheet" href="styles.css?v=15">
+  <link rel="stylesheet" href="src/shaders/threeui.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦵</text></svg>">
+</head>
+<body>
+
+  <!-- Scanline Overlay -->
+  <div class="scanline-overlay"></div>
+
+  <!-- Floating Particles -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loading-screen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text" id="loading-text">Initializing AI pose detection...</div>
+  </div>
+
+  <!-- ThreeUI Animated Top Dock Root -->
+  <div id="top-dock-root" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;"></div>
+
+  <!-- React & Three.js & Babel Dependencies for AnimatedTopDock -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Mount AnimatedTopDock -->
+  <script type="text/babel" data-type="module">
+    // Load the bundled TSX directly via fetch to ensure it parses synchronously or 
+    // inject it since Babel standalone supports data-type="module" scripts with external src.
+  </script>
+  <script type="text/babel" data-type="module" src="topdock.tsx"></script>
+  <script type="text/babel" data-type="module">
+    const { createRoot } = ReactDOM;
+    // We will render it after topdock.tsx is loaded, wait, Babel standalone loads external src asynchronously.
+    // So we need to put the render logic at the bottom of topdock.tsx!
+  </script>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Library Section -->
+    <section id="library-section">
+
+      <div class="hero-section">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          AI-Powered Rehabilitation
+        </div>
+        <h1 class="hero-title">
+          Your Personal <span class="highlight">Recovery</span> Assistant
+        </h1>
+        <p class="hero-subtitle">
+          Follow guided knee & shoulder exercises with real-time skeleton tracking. Our AI monitors your form and provides instant feedback to ensure safe, effective rehabilitation.
+        </p>
+      </div>
+
+      <!-- Daily Progress Section -->
+      <div class="daily-progress" id="daily-progress">
+        <div class="progress-header">
+          <h3>Today's Plan</h3>
+          <span class="progress-count" id="daily-progress-count">0 / 0 Completed</span>
+        </div>
+        <div class="daily-progress-bar">
+          <div class="daily-progress-fill" id="daily-progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Body Region Tabs -->
+      <div class="body-region-tabs" id="body-region-tabs">
+        <button class="region-tab active" data-region="knee">
+          <span class="region-tab-icon">🦵</span>
+          <span class="region-tab-label">Knee Exercises</span>
+        </button>
+        <button class="region-tab" data-region="shoulder">
+          <span class="region-tab-icon">🦾</span>
+          <span class="region-tab-label">Shoulder Exercises</span>
+        </button>
+      </div>
+
+
+
+      <!-- Exercise Grid -->
+      <div class="exercise-grid" id="exercise-grid">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Exercise / Camera View -->
+    <div class="exercise-view" id="exercise-view">
+
+      <!-- Exercise View Header -->
+      <div class="exercise-view-header">
+        <button class="back-btn" id="back-btn">
+          <span>←</span> Back to Exercises
+        </button>
+        <h2 class="exercise-view-title" id="exercise-view-title">Exercise</h2>
+        <div style="width: 140px"></div>
+      </div>
+
+
+
+      <!-- Body: Camera + Side Panel -->
+      <div class="exercise-view-body">
+
+        <!-- Camera -->
+        <div class="camera-container">
+          <div class="camera-wrapper">
+            <video id="webcam" autoplay playsinline muted></video>
+            <canvas id="pose-canvas"></canvas>
+          </div>
+
+          <!-- Camera Placeholder -->
+          <div class="camera-placeholder" id="camera-placeholder">
+            <div class="camera-placeholder-icon">📷</div>
+            <h3>Enable Camera to Begin</h3>
+            <p>We'll track your body position in real-time and overlay a skeleton guide to help you perform the exercise correctly.</p>
+            <button class="start-camera-btn" id="start-camera-btn">
+              🎥 Start Camera
+            </button>
+          </div>
+
+          <!-- Overlay: Angle Display -->
+          <div class="camera-overlay">
+            <div class="angle-display" id="angle-display">
+              <div class="angle-label" id="angle-label">Knee Angle</div>
+              <div class="angle-value" id="angle-value">—</div>
+              <div class="angle-target" id="angle-target">Target: — °</div>
+            </div>
+
+            <!-- Overlay: Rep Counter -->
+            <div class="rep-counter" id="rep-counter">
+              <div class="rep-label">Reps</div>
+              <div class="rep-value" id="rep-value">0</div>
+              <div class="rep-total" id="rep-total">/ 10</div>
+            </div>
+
+            <!-- Overlay: Form Feedback -->
+            <div class="form-feedback" id="form-feedback">Position yourself in camera view</div>
+            
+            <!-- Overlay: Hold Indicator -->
+            <div class="hold-indicator" id="hold-indicator" style="display: none;">
+              <div class="hold-circle">
+                <span class="hold-countdown" id="hold-countdown">5</span>
+              </div>
+              <div class="hold-bar-container">
+                <div class="hold-bar-fill" id="hold-bar-fill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side Panel -->
+        <aside class="side-panel">
+
+          <!-- Exercise Info -->
+          <div class="panel-section">
+            <div class="panel-section-title">Current Exercise</div>
+            <div class="exercise-info-header">
+              <div class="exercise-info-icon" id="exercise-info-icon">🦵</div>
+              <div>
+                <div class="exercise-info-name" id="exercise-info-name">Exercise Name</div>
+              </div>
+            </div>
+            <p class="exercise-info-desc" id="exercise-info-desc">Exercise description</p>
+
+
+            <!-- Stats -->
+            <div class="stats-row">
+              <div class="stat-card">
+                <div class="stat-value" id="stat-sets">3</div>
+                <div class="stat-label">Sets</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" id="stat-reps">10</div>
+                <div class="stat-label">Reps</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" id="stat-hold">5s</div>
+                <div class="stat-label">Hold</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instructions -->
+          <div class="panel-section">
+            <div class="panel-section-title">Step-by-Step Instructions</div>
+            <ol class="instructions-list" id="instructions-list">
+              <!-- Populated by JS -->
+            </ol>
+          </div>
+
+          <!-- Tips -->
+          <div class="panel-section">
+            <div class="panel-section-title">Pro Tips</div>
+            <div class="tip-box">
+              <span class="tip-icon">💡</span>
+              <span id="tip-text">Focus on slow, controlled movements.</span>
+            </div>
+          </div>
+
+          <!-- Progress -->
+          <div class="panel-section">
+            <div class="panel-section-title">Session Progress</div>
+            <div class="timer-display">
+              <div class="timer-value" id="timer-value">00:00</div>
+              <div class="timer-label">Elapsed Time</div>
+            </div>
+            <div class="progress-container">
+              <div class="progress-info">
+                <span class="progress-label" id="progress-label">Set 1 of 3</span>
+                <span class="progress-value" id="progress-value-text">0%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="exercise-controls">
+            <button class="control-btn control-btn-primary" id="start-exercise-btn">
+              <span>▶️</span> Start Exercise
+            </button>
+            <button class="control-btn control-btn-danger" id="stop-exercise-btn">
+              <span>⏹️</span> End Session
+            </button>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- App Module -->
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
