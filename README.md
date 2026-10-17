@@ -17,7 +17,7 @@
 <a href="https://github.com/ArunGopal-R?tab=repositories"><img src="https://img.shields.io/badge/Portfolio-Explore%20Projects-5B21B6?style=for-the-badge&logo=github&logoColor=white" alt="Explore portfolio and repositories" /></a>
 <a href="https://in.linkedin.com/in/arungopal-r-929154336"><img src="https://img.shields.io/badge/LinkedIn-Connect-4338CA?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn profile" /></a>
 <a href="mailto:arungopalravisankar@gmail.com"><img src="https://img.shields.io/badge/Email-Get%20in%20Touch-4F46E5?style=for-the-badge&logo=gmail&logoColor=white" alt="Email contact" /></a>
-<a href="https://github.com/ArunGopal-R"><img src="https://img.shields.io/badge/GitHub-View%20Profile-312E81?style=for-the-badge&logo=github&logoColor=white" alt="GitHub profile" /></a>
+<a href="https://github.com/Arun5916"><img src="https://img.shields.io/badge/GitHub-View%20Profile-312E81?style=for-the-badge&logo=github&logoColor=white" alt="GitHub profile" /></a>
 
 <br/><br/>
 
