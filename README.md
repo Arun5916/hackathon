@@ -14,7 +14,7 @@
 
 <br/><br/>
 
-<a href="https://github.com/ArunGopal-R?tab=repositories"><img src="https://img.shields.io/badge/Portfolio-Explore%20Projects-5B21B6?style=for-the-badge&logo=github&logoColor=white" alt="Explore portfolio and repositories" /></a>
+<a href="https://github.com/Arun5916?tab=repositories"><img src="https://img.shields.io/badge/Portfolio-Explore%20Projects-5B21B6?style=for-the-badge&logo=github&logoColor=white" alt="Explore portfolio and repositories" /></a>
 <a href="https://in.linkedin.com/in/arungopal-r-929154336"><img src="https://img.shields.io/badge/LinkedIn-Connect-4338CA?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn profile" /></a>
 <a href="mailto:arungopalravisankar@gmail.com"><img src="https://img.shields.io/badge/Email-Get%20in%20Touch-4F46E5?style=for-the-badge&logo=gmail&logoColor=white" alt="Email contact" /></a>
 <a href="https://github.com/Arun5916"><img src="https://img.shields.io/badge/GitHub-View%20Profile-312E81?style=for-the-badge&logo=github&logoColor=white" alt="GitHub profile" /></a>
@@ -318,16 +318,16 @@ Gained practical exposure to cybersecurity fundamentals, vulnerability assessmen
 
 <div align="center">
 
-<a href="https://github.com/ArunGopal-R">
-<img height="180" src="https://github-readme-stats.vercel.app/api?username=ArunGopal-R&show_icons=true&rank_icon=github&hide_border=true&bg_color=0D1117&title_color=A78BFA&text_color=C9D1D9&icon_color=818CF8&border_color=312E81&include_all_commits=true" alt="GitHub statistics" />
+<a href="https://github.com/Arun5916">
+<img height="180" src="https://github-readme-stats.vercel.app/api?username=Arun5916&show_icons=true&rank_icon=github&hide_border=true&bg_color=0D1117&title_color=A78BFA&text_color=C9D1D9&icon_color=818CF8&border_color=312E81&include_all_commits=true" alt="GitHub statistics" />
 </a>
 
-<a href="https://github.com/ArunGopal-R">
-<img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ArunGopal-R&layout=compact&langs_count=8&hide_border=true&bg_color=0D1117&title_color=A78BFA&text_color=C9D1D9&border_color=312E81" alt="Most used programming languages" />
+<a href="https://github.com/Arun5916">
+<img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arun5916&layout=compact&langs_count=8&hide_border=true&bg_color=0D1117&title_color=A78BFA&text_color=C9D1D9&border_color=312E81" alt="Most used programming languages" />
 </a>
 
-<a href="https://github.com/ArunGopal-R">
-<img src="https://streak-stats.demolab.com?user=ArunGopal-R&theme=tokyonight&hide_border=true&background=0D1117&ring=8B5CF6&fire=A78BFA&currStreakLabel=A78BFA&sideLabels=9CA3AF&dates=64748B" alt="GitHub contribution streak" />
+<a href="https://github.com/Arun5916">
+<img src="https://streak-stats.demolab.com?user=Arun5916&theme=tokyonight&hide_border=true&background=0D1117&ring=8B5CF6&fire=A78BFA&currStreakLabel=A78BFA&sideLabels=9CA3AF&dates=64748B" alt="GitHub contribution streak" />
 </a>
 
 </div>
@@ -338,7 +338,7 @@ Gained practical exposure to cybersecurity fundamentals, vulnerability assessmen
 
 <div align="center">
 
-<img width="100%" src="https://github-profile-trophy.vercel.app/?username=ArunGopal-R&theme=discord&no-frame=true&no-bg=true&margin-w=8&column=4" alt="GitHub profile trophies" />
+<img width="100%" src="https://github-profile-trophy.vercel.app/?username=Arun5916&theme=discord&no-frame=true&no-bg=true&margin-w=8&column=4" alt="GitHub profile trophies" />
 
 </div>
 
@@ -348,7 +348,7 @@ Gained practical exposure to cybersecurity fundamentals, vulnerability assessmen
 
 <div align="center">
 
-<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=ArunGopal-R&bg_color=0D1117&color=A78BFA&line=6366F1&point=8B5CF6&area=true&hide_border=true&custom_title=Contribution%20Activity" alt="GitHub contribution activity graph" />
+<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Arun5916&bg_color=0D1117&color=A78BFA&line=6366F1&point=8B5CF6&area=true&hide_border=true&custom_title=Contribution%20Activity" alt="GitHub contribution activity graph" />
 
 </div>
 
@@ -358,7 +358,7 @@ Gained practical exposure to cybersecurity fundamentals, vulnerability assessmen
 
 <div align="center">
 
-<img width="100%" src="https://raw.githubusercontent.com/ArunGopal-R/ArunGopal-R/output/github-contribution-grid-snake.svg" alt="GitHub contribution snake animation" />
+<img width="100%" src="https://raw.githubusercontent.com/Arun5916/Arun5916/output/github-contribution-grid-snake.svg" alt="GitHub contribution snake animation" />
 
 </div>
 
